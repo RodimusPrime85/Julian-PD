@@ -1,7 +1,13 @@
 @import "bourbon";
+@import "reset";
+@import "syntax";
+@import "link";
 
+@import "4_typography";
 @import "3_fonts";
 @import "2_vars";
-@import "1_base";
+@import "1_common";
 
-@import "modules/header";
+@import "header";
+
+@import "home";
