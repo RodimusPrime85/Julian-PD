@@ -1,15 +1,23 @@
+mixin nav-content()
+	ul
+		li: a(href="#about") About
+		li: a(href="#case") Case Studies
+		li: a(href="#illustration") Illustration
+		li: a(href="#design") Design
+		li: a(href="#contact") Contact
+		
+.mobile-nav.is-open
+	+nav-content()
+
+
 header
 	.header-position
 		h1.logo Julian Strayhorn II
 
 		nav.site-nav
-			ul
-				li: a(href="#about") About
-				li: a(href="#case") Case Studies
-				li: a(href="#illustration") Illustration
-				li: a(href="#design") Design
-				li: a(href="#contact") Contact
+			+nav-content()
 
 		a(href="mailto:strayhorn.design@gmail.com").email-link +email me
-
+		.mobile-nav-toggle
+		
 		
