@@ -1,6 +1,15 @@
+mixin design-img(link, img)
+  a(href="#{link}").design-img-link
+    img(src="img/thumbs/#{img}")
+  
 section.casestudy
   .flex.flex--center
     .col-2
-      h4 Sometime I Design and Research...
+      h4 Sometimes I Design and Research...
+      +design-img('','dr-1.jpg')
+      +design-img('','dr-2.jpg')
+      +design-img('','dr-3.jpg')
+      +design-img('','dr-4.jpg')
+    
       
-      
+         
