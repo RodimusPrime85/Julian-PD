@@ -1,33 +1,52 @@
-var imgGal = $(function(img, e) {
-  // Cache variables
-  var $overlay = $('<div id="overlay"></div>'),
-    $image = $("<img>"),
-    $caption = $('<p class="caption"></p>');
+$(function(){
 
-  // add image to overlay
-  $overlay.append($image);
+// Scroll to anchor
+// Source: http://css-tricks.com/snippets/jquery/smooth-scrolling
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+        || location.hostname == this.hostname) {
 
-  // add overlay
-  $("body").append($overlay);
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body')
+        // added the stop() function to prevent animations from queueing up
+        .stop().animate({
+          scrollTop: target.offset().top
+        }, 1000).find("h2 > a")
 
-  // Capture click event on a link to img
-  var imgLinks = $('#imageGallery a');
-
-  imgLinks.click(function(e) {
-    e.preventDefault();
-    var imgLoc = $(this).attr('href');
-    $image.attr('src', imgLoc);
-    //add caption to overlay
-    $caption.insertAfter($image);
-    $image.addClass('borderedImg');
-    $overlay.slideDown();
-
-    var captionText = $(this).children('img').attr('alt');
-    $caption.text(captionText);
-
+        // added a top padding to make the title visible on my fixed top nav menu
+        .css("padding-top","50px");
+        return false;
+      }
+    }
   });
 
-  $overlay.click(function() {
-    $overlay.slideUp();
-  });
+//scroll to Top
+$(window).scroll(function(){
+            if ($(this).scrollTop() > 500) {
+                $('.backToTop').fadeIn();
+            } else {
+                $('.backToTop').fadeOut();
+            }
+        });
+
+$('.backToTop').click(function(){
+        $("html, body").animate({ scrollTop: 0 }, 1500, "easeOutQuint");
+        return false;
+        });
+
+//Scroll to bottom
+$(window).scroll(function(){
+            if ($(this).scrollTop() > 0 && $(this).scrollTop() < 500 ) {
+                $('.backToBottom').fadeIn();
+            } else {
+                $('.backToBottom').fadeOut();
+            }
+        });
+
+$('.backToBottom').click(function(){
+        $("html, body").animate({ scrollTop: $(document).height()}, 800);
+        return false;
+        });
 });
