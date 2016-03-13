@@ -3,7 +3,6 @@ var gulp        = require('gulp'),
     sass        = require('gulp-sass'),
     prefix      = require('gulp-autoprefixer'),
     minifycss   = require('gulp-minify-css'),
-    jshint      = require('gulp-jshint'),
     concat      = require('gulp-concat'),
     uglify      = require('gulp-uglify'),
     rename      = require('gulp-rename'),
@@ -75,21 +74,6 @@ gulp.task('jade', function() {
     .pipe(gulp.dest('_includes'));
 });
 
-
-/*
-** JS Task
-*/
-gulp.task('js', function() {
-  return gulp.src('js/common.js')
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'))
-    .pipe(concat('common.js'))
-    .pipe(gulp.dest('js'))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(uglify())
-    .pipe(gulp.dest('js'))
-    .pipe(gulp.dest('_site/js'));
-});
 
 
 /**
